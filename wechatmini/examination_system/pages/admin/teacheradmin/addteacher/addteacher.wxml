@@ -1,0 +1,41 @@
+<!--pages/admin/addcourse/add.wxml-->
+<view class="container">
+  <form bindsubmit="formSubmit">
+        <view class="row">
+            <text>工号：</text>
+            <input  type="number" name="userid"  placeholder="请输入工号" />
+        </view>
+        <view class="row">
+            <text>姓名：</text>
+            <input type="text" name="username"  placeholder="请输入姓名" />
+        </view>
+        <view class="row">
+            <text >性别：</text>
+           <input  type="text" name="sex"  placeholder="请输入性别"></input>
+        </view>
+         <view class="row">
+            <text>出生年份：</text>
+            <input type="date" name="birthyear"  placeholder="请输入出生年份XXXX-XX-XX" />
+        </view>
+        <view class="row">
+            <text>学历：</text>
+            <input type="text" name="degree"  placeholder="请输入学历" />
+        </view>
+         <view class="row">
+            <text>职称：</text>
+            <input type="text" name="title"  placeholder="请输入职称" />
+        </view>
+        <view class="row">
+            <text>入职时间：</text>
+            <input type="date" name="grade"  placeholder="请输入入职时间XXXX-XX-XX" />
+        </view>
+         <view class="row">
+            <text>所属院系：</text>
+            <input type="number" name="collegeid"  placeholder="请输入所属院系" />
+        </view>
+        <view class="row">
+            <button type="primary" form-type="submit">添加</button>
+            <button type="primary" form-type="reset">重置</button>
+        </view>
+  </form>
+</view>

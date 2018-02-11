@@ -1,0 +1,65 @@
+
+<!--导航条-->  
+<view class="navbar">  
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>  
+</view>  
+  
+<!--课程管理-->  
+<view hidden="{{currentTab!==0}}">  
+  
+</view> 
+
+  
+<!--教师管理-->  
+<view hidden="{{currentTab!==1}}" bindtap='showTeacher'>  
+</view>  
+  
+<!--学生管理-->  
+<view hidden="{{currentTab!==2}}">  
+   <view class="table">
+  <view class="tr bg-w">
+    <view class="th">学号</view>
+    <view class="th">姓名</view>
+    <view class="th ">性别</view>
+ <!--   <view class="th ">出生年份</view>-->
+    <view class="th ">出生年份</view>
+    <view class="th ">入学时间</view>
+   <!-- <view class="th ">入职年份</view>-->
+    <view class="th ">操作</view>
+  </view>
+  <view class="tr-add">
+    <button size="default" type="default" plain='true' bindtap='addStudent'>添加学生</button>
+  </view>
+  <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower"> 
+  <block wx:for="{{studentlist}}" wx:key="{{userid}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.userid}}</view>
+      <view class="td">{{item.username}}</view>
+      <view class="td">{{item.sex}}</view>
+      <view class="td">{{item.birthyear}}</view>
+      <view class="td">{{item.grade}}</view>
+      <view class="td">
+        <navigator class='font-bluecolor' url="../editstudent/editstudent?userid={{item.userid}}">修改</navigator> 
+          <navigator class='font-redcolor' url="../deletestudent/deletestudent?userid={{item.userid}}">删除</navigator>
+      </view>
+    </view>
+    <view class="tr" wx:else>
+     <view class="td">{{item.userid}}</view>
+      <view class="td">{{item.username}}</view>
+      <view class="td">{{item.sex}}</view>
+      <view class="td">{{item.birthyear}}</view>
+      <view class="td">{{item.grade}}</view>
+      <view class="td">
+        <navigator class='font-bluecolor' url="../editstudent/editstudent?userid={{item.userid}}">修改</navigator> 
+          <navigator class='font-redcolor' url="../deletestudent/deletestudent?userid={{item.userid}}">删除</navigator>
+      </view>
+    </view>
+  </block>
+  </scroll-view> 
+</view>    
+</view>  
+
+<view hidden="{{currentTab!==3}}">  
+</view> 
+
+

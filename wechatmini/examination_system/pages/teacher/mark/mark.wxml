@@ -1,0 +1,20 @@
+<view class="container">
+  <form bindsubmit="formSubmit">
+        <view class="row">
+            <text>学号：</text>
+            <input type="text" name="studentid" value="{{selectedCourse.studentid}}" placeholder="请输入学号" />
+        </view>
+        <view class="row">
+            <text >姓名:</text>
+           <input  type="text" name="name" value="{{selectedCourse.studentCustom.username}}" placeholder="请输入姓名"></input>
+        </view>
+        <view class="row">
+            <text >成绩:</text>
+           <input  type="number" name="mark"  placeholder="请输入分数"></input>
+        </view>
+        <view class="row">
+            <button type="primary" form-type="submit">提交</button>
+            <button type="primary" form-type="reset">重置</button>
+        </view>
+  </form>
+</view> 

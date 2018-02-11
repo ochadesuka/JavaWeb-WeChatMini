@@ -1,0 +1,182 @@
+<!--index.wxml-->  
+<view class="swiper-tab">  
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">课程管理</view>  
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">教师管理</view>  
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">学生管理</view>  
+    <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">修改密码</view>
+</view>  
+  
+<swiper current="{{currentTab}}" class="swiper-box" duration="300"  bindchange="bindChange">  
+    <!-- 课程管理 -->  
+    <swiper-item>  
+      <view class="table main-container">
+  <view class="tr bg-w topBlock">
+    <view class="th">课程号</view>
+    <view class="th">课程名称</view>
+    <view class="th ">教师编号</view>
+    <view class="th ">上课时间</view>
+    <view class="th ">上课地点</view>
+    <view class="th ">周数</view>
+    <view class="th ">课程类型</view>
+    <view class="th ">学分</view>
+    <view class="th ">操作</view>
+  </view>
+  <view class="tr-add">
+    <button size="default" type="default" plain='true' bindtap='addCourse'>添加课程</button>
+  </view>
+  <view class="bottomBlock">
+  <scroll-view  scroll-y="true" bindscrolltolower="searchScrollLower"> 
+  <block wx:for="{{courselist}}" wx:key="{{courseid}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.courseid}}</view>
+      <view class="td">{{item.coursename}}</view>
+      <view class="td">{{item.teacherid}}</view>
+      <view class="td">{{item.coursetime}}</view>
+      <view class="td">{{item.classroom}}</view>
+      <view class="td">{{item.courseweek}}</view>
+      <view class="td">{{item.coursetype}}</view>
+      <view class="td">{{item.score}}</view>
+      <view class="td">
+        <navigator class='font-bluecolor' url="../changecourse/change?courseid={{item.courseid}}">修改</navigator>   
+         <navigator class='font-redcolor' url="../deletecourse/delete?courseid={{item.courseid}}">删除</navigator>
+      </view>
+    </view>
+    <view class="tr" wx:else>
+     <view class="td">{{item.courseid}}</view>
+      <view class="td">{{item.coursename}}</view>
+      <view class="td">{{item.teacherid}}</view>
+      <view class="td">{{item.coursetime}}</view>
+      <view class="td">{{item.classroom}}</view>
+      <view class="td">{{item.courseweek}}</view>
+      <view class="td">{{item.coursetype}}</view>
+      <view class="td">{{item.score}}</view>
+      <view class="td">
+        <navigator class='font-bluecolor' url="../changecourse/change?courseid={{item.courseid}}">修改</navigator> 
+          <navigator class='font-redcolor' url="../deletecourse/delete?courseid={{item.courseid}}">删除</navigator>
+      </view>
+    </view>
+  </block>
+  </scroll-view> 
+  </view>
+</view>  
+    </swiper-item>  
+    <!-- 教师管理 -->  
+    <swiper-item>  
+       <view class="table main-container">
+  <view class="tr bg-w topBlock">
+    <view class="th">教师编号</view>
+    <view class="th">姓名</view>
+    <view class="th ">性别</view>
+    <view class="th ">出生年份</view>
+    <view class="th ">学历</view>
+    <view class="th ">职称</view>
+  <view class="th ">入职年份</view>
+    <view class="th ">操作</view>
+  </view>
+  <view class="tr-add">
+    <button size="default" type="default" plain='true' bindtap='addTeacher'>添加教师</button>
+  </view>
+  <view class="bottomBlock">
+  <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower"> 
+  <block wx:for="{{teacherlist}}" wx:key="{{userid}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.userid}}</view>
+      <view class="td">{{item.username}}</view>
+      <view class="td">{{item.sex}}</view>
+   <view class="td">{{item.birthyear}}</view>
+      <view class="td">{{item.degree}}</view>
+      <view class="td">{{item.title}}</view>
+    <view class="td">{{item.grade}}</view>
+      <view class="td">
+        <navigator class='font-bluecolor' url="../editteacher/editteacher?userid={{item.userid}}">修改</navigator> 
+          <navigator class='font-redcolor' url="../deleteteacher/deleteteacher?userid={{item.userid}}">删除</navigator>
+      </view>
+    </view>
+    <view class="tr" wx:else>
+      <view class="td">{{item.userid}}</view>
+      <view class="td">{{item.username}}</view>
+      <view class="td">{{item.sex}}</view>
+    <view class="td">{{item.birthyear}}</view>
+      <view class="td">{{item.degree}}</view>
+      <view class="td">{{item.title}}</view>
+     <view class="td">{{item.grade}}</view>
+      <view class="td">
+        <navigator class='font-bluecolor' url="../editteacher/editteacher?userid={{item.userid}}">修改</navigator> 
+          <navigator class='font-redcolor' url="../deleteteacher/deleteteacher?userid={{item.userid}}">删除</navigator>
+      </view>
+    </view>
+  </block>
+  </scroll-view> 
+  </view>
+</view>  
+    </swiper-item>  
+    <!-- 学生管理 -->  
+    <swiper-item>  
+       <view class="table main-container">
+  <view class="tr bg-w topBlock">
+    <view class="th">学号</view>
+    <view class="th">姓名</view>
+    <view class="th ">性别</view>
+ <!--   <view class="th ">出生年份</view>-->
+    <view class="th ">出生年份</view>
+    <view class="th ">入学时间</view>
+   <!-- <view class="th ">入职年份</view>-->
+    <view class="th ">操作</view>
+  </view>
+  <view class="tr-add">
+    <button size="default" type="default" plain='true' bindtap='addStudent'>添加学生</button>
+  </view>
+  <view class="bottomBlock">
+  <scroll-view  scroll-y="true" bindscrolltolower="searchScrollLower"> 
+  <block wx:for="{{studentlist}}" wx:key="{{userid}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.userid}}</view>
+      <view class="td">{{item.username}}</view>
+      <view class="td">{{item.sex}}</view>
+      <view class="td">{{item.birthyear}}</view>
+      <view class="td">{{item.grade}}</view>
+      <view class="td">
+        <navigator class='font-bluecolor' url="../editstudent/editstudent?userid={{item.userid}}">修改</navigator> 
+          <navigator class='font-redcolor' url="../deletestudent/deletestudent?userid={{item.userid}}">删除</navigator>
+      </view>
+    </view>
+    <view class="tr" wx:else>
+     <view class="td">{{item.userid}}</view>
+      <view class="td">{{item.username}}</view>
+      <view class="td">{{item.sex}}</view>
+      <view class="td">{{item.birthyear}}</view>
+      <view class="td">{{item.grade}}</view>
+      <view class="td">
+        <navigator class='font-bluecolor' url="../editstudent/editstudent?userid={{item.userid}}">修改</navigator> 
+          <navigator class='font-redcolor' url="../deletestudent/deletestudent?userid={{item.userid}}">删除</navigator>
+      </view>
+    </view>
+  </block>
+  </scroll-view> 
+  </view>
+</view>   
+    </swiper-item>  
+    <!-- 修改密码 -->
+     <swiper-item>  
+     <view class="container">
+  <form bindsubmit="formSubmit">
+        <view class="row">
+            <text>账号：</text>
+            <input  type="text" name="username"  placeholder="请输入用户名" />
+        </view>
+        <view class="row">
+            <text>密码：</text>
+            <input type="password" name="password"  placeholder="请输入密码" />
+        </view>
+        <view class="row">
+            <text >确认密码：</text>
+           <input  type="password" name="password2"  placeholder="请再次输入密码"></input>
+        </view>
+        <view class="row">
+            <button type="primary" form-type="submit">提交</button>
+            <button type="primary" form-type="reset">重置</button>
+        </view>
+  </form>
+</view> 
+    </swiper-item>
+</swiper>  

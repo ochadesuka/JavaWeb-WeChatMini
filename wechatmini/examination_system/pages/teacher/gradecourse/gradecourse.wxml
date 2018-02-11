@@ -1,0 +1,38 @@
+ <view class="table main-container">
+  <view class="tr bg-w topBlock">
+    <view class="th">学号</view>
+    <view class="th">姓名</view>
+    <view class="th ">分数</view>
+    <view class="th ">操作</view>
+  </view>
+  <view class="bottomBlock">
+  <scroll-view  scroll-y="true" bindscrolltolower="searchScrollLower"> 
+  <block wx:for="{{selectedcourselist}}" wx:key="{{courseid}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.studentCustom.userid}}</view>
+      <view class="td">{{item.studentCustom.username}}</view>
+      <block wx:if="{{!item.over}}">
+      <view class="td">未打分</view>
+      <view class="td"><navigator class='font-bluecolor' url="../mark/mark?studentid={{item.studentid}}&courseid={{item.courseid}}">打分</navigator></view>
+      </block>
+      <block wx:if="{{item.over}}">
+      <view class="td">{{item.mark}}</view>
+      <view class="td">已打分</view>
+      </block>
+    </view>
+    <view class="tr" wx:else>
+      <view class="td">{{item.studentCustom.userid}}</view>
+      <view class="td">{{item.studentCustom.username}}</view>
+      <block wx:if="{{!item.over}}">
+      <view class="td">未打分</view>
+      <view class="td"><navigator class='font-bluecolor' url="../mark/mark?studentid={{item.studentid}}&courseid={{item.courseid}}">打分</navigator></view>
+      </block>
+      <block wx:if="{{item.over}}">
+      <view class="td">{{item.mark}}</view>
+      <view class="td">已打分</view>
+      </block>
+    </view>
+  </block>
+  </scroll-view> 
+  </view>
+</view>

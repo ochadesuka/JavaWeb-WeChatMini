@@ -1,0 +1,80 @@
+<!--index.wxml-->  
+<view class="swiper-tab">  
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">我的课程</view>  
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">修改密码</view>  
+</view>  
+  
+<swiper current="{{currentTab}}" class="swiper-box" duration="300"  bindchange="bindChange">  
+    <!-- 我的课程 -->  
+    <swiper-item>  
+      <view class="table main-container">
+  <view class="tr bg-w topBlock">
+    <view class="th">课程号</view>
+    <view class="th">课程名称</view>
+    <view class="th ">教师编号</view>
+    <view class="th ">上课时间</view>
+    <view class="th ">上课地点</view>
+    <view class="th ">周数</view>
+    <view class="th ">课程类型</view>
+    <view class="th ">学分</view>
+    <view class="th ">操作</view>
+  </view>
+  <view class="bottomBlock">
+  <scroll-view  scroll-y="true" bindscrolltolower="searchScrollLower"> 
+  <block wx:for="{{courselist}}" wx:key="{{courseid}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.courseid}}</view>
+      <view class="td">{{item.coursename}}</view>
+      <view class="td">{{item.teacherid}}</view>
+      <view class="td">{{item.coursetime}}</view>
+      <view class="td">{{item.classroom}}</view>
+      <view class="td">{{item.courseweek}}</view>
+      <view class="td">{{item.coursetype}}</view>
+      <view class="td">{{item.score}}</view>
+      <view class="td">
+        <navigator class='font-bluecolor' url="../gradecourse/gradecourse?courseid={{item.courseid}}">成绩</navigator>   
+      </view>
+    </view>
+    <view class="tr" wx:else>
+     <view class="td">{{item.courseid}}</view>
+      <view class="td">{{item.coursename}}</view>
+      <view class="td">{{item.teacherid}}</view>
+      <view class="td">{{item.coursetime}}</view>
+      <view class="td">{{item.classroom}}</view>
+      <view class="td">{{item.courseweek}}</view>
+      <view class="td">{{item.coursetype}}</view>
+      <view class="td">{{item.score}}</view>
+      <view class="td">
+        <navigator class='font-bluecolor' url="../gradecourse/gradecourse?courseid={{item.courseid}}">成绩</navigator> 
+      </view>
+    </view>
+  </block>
+  </scroll-view> 
+  </view>
+</view>  
+    </swiper-item>  
+
+    <!-- 修改密码 -->
+     <swiper-item>  
+     <view class="container">
+  <form bindsubmit="formSubmit">
+        <view class="row">
+            <text>旧密码：</text>
+            <input type="password" name="password"  placeholder="请输入旧密码" />
+        </view>
+        <view class="row">
+            <text >新密码：</text>
+           <input  type="password" name="password1"  placeholder="请输入新密码"></input>
+        </view>
+        <view class="row">
+            <text >确认密码：</text>
+           <input  type="password" name="password2"  placeholder="请确认密码"></input>
+        </view>
+        <view class="row">
+            <button type="primary" form-type="submit">提交</button>
+            <button type="primary" form-type="reset">重置</button>
+        </view>
+  </form>
+</view> 
+    </swiper-item>
+</swiper>  

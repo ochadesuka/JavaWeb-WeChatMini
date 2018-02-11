@@ -1,0 +1,29 @@
+/* pages/admin/addcourse/add.wxss */
+.container{
+    padding: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    border-shadow: 1px 1px #0099CC;
+}
+.row{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+.row text{
+    flex-grow: 1;
+    text-align: right;
+}
+.row input{
+    font-size: 1.1rem;
+    color: #ccc;
+    flex-grow: 5;
+    border: 1px solid #0099CC;
+    display: inline-block;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0.15rem #aaa;
+    padding: 0.3rem;
+}
+.row button{
+    padding: 0 2rem;
+}

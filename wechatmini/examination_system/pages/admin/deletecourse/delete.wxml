@@ -1,0 +1,2 @@
+<view wx:if="{{isremove}}">删除成功</view>
+<view wx:else>删除失败</view>

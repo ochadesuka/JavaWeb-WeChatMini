@@ -1,0 +1,33 @@
+<!--pages/admin/addcourse/add.wxml-->
+<view class="container">
+  <form bindsubmit="formSubmit">
+        <view class="row">
+            <text>学号：</text>
+            <input  type="number" name="userid" value="{{student.userid}}" placeholder="请输入学号" />
+        </view>
+        <view class="row">
+            <text>姓名：</text>
+            <input type="text" name="username" value="{{student.username}}" placeholder="请输入姓名" />
+        </view>
+        <view class="row">
+            <text >性别：</text>
+           <input  type="text" name="sex" value="{{student.sex}}" placeholder="请输入性别"></input>
+        </view>
+         <view class="row">
+            <text>出生年份：</text>
+            <input type="date" name="birthyear" value="{{student.birthyear}}" placeholder="请输入出生年份XXXX-XX-XX" />
+        </view>
+        <view class="row">
+            <text>入学时间：</text>
+            <input type="date" name="grade" value="{{student.grade}}" placeholder="请输入入学时间XXXX-XX-XX" />
+        </view>
+         <view class="row">
+            <text>所属院系：</text>
+            <input type="number" name="collegeid"  value="{{student.collegeid}}"placeholder="请输入所属院系" />
+        </view>
+        <view class="row">
+            <button type="primary" form-type="submit">提交</button>
+            <button type="primary" form-type="reset">重置</button>
+        </view>
+  </form>
+</view>

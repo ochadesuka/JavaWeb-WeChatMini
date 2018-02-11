@@ -1,0 +1,177 @@
+<!--index.wxml-->  
+<view class="swiper-tab">  
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">所有课程</view>  
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">已选课程</view>  
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已修课程</view>  
+    <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">修改密码</view>
+</view>  
+  
+<swiper current="{{currentTab}}" class="swiper-box" duration="300"  bindchange="bindChange">  
+    <!--  -->  
+    <swiper-item>  
+      <view class="table main-container">
+  <view class="tr bg-w topBlock">
+    <view class="th">课程号</view>
+    <view class="th">课程名称</view>
+    <view class="th ">教师编号</view>
+    <view class="th ">上课时间</view>
+    <view class="th ">上课地点</view>
+    <view class="th ">周数</view>
+    <view class="th ">课程类型</view>
+    <view class="th ">学分</view>
+    <view class="th ">操作</view>
+  </view>
+  <view class="bottomBlock">
+  <scroll-view  scroll-y="true"> 
+  <block wx:for="{{courselist}}" wx:key="{{courseid}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.courseid}}</view>
+      <view class="td">{{item.coursename}}</view>
+      <view class="td">{{item.teacherid}}</view>
+      <view class="td">{{item.coursetime}}</view>
+      <view class="td">{{item.classroom}}</view>
+      <view class="td">{{item.courseweek}}</view>
+      <view class="td">{{item.coursetype}}</view>
+      <view class="td">{{item.score}}</view>
+      <view class="td">
+        <button type='primary'data-id="{{item.courseid}}" bindtap='chooseCourse'>选课</button>
+      </view>
+    </view>
+    <view class="tr" wx:else>
+     <view class="td">{{item.courseid}}</view>
+      <view class="td">{{item.coursename}}</view>
+      <view class="td">{{item.teacherid}}</view>
+      <view class="td">{{item.coursetime}}</view>
+      <view class="td">{{item.classroom}}</view>
+      <view class="td">{{item.courseweek}}</view>
+      <view class="td">{{item.coursetype}}</view>
+      <view class="td">{{item.score}}</view>
+      <view class="td">
+        <button type='primary' data-id="{{item.courseid}}" bindtap='chooseCourse'>选课</button>
+      </view>
+    </view>
+  </block>
+  </scroll-view> 
+  </view>
+</view>  
+    </swiper-item>  
+    <!-- 已选课程 -->  
+    <swiper-item>  
+      <view class="table main-container">
+  <view class="tr bg-w topBlock">
+    <view class="th">课程号</view>
+    <view class="th">课程名称</view>
+    <view class="th ">教师编号</view>
+    <view class="th ">上课时间</view>
+    <view class="th ">上课地点</view>
+    <view class="th ">周数</view>
+    <view class="th ">课程类型</view>
+    <view class="th ">学分</view>
+    <view class="th ">操作</view>
+  </view>
+  <view class="bottomBlock">
+  <scroll-view  scroll-y="true" > 
+  <block wx:for="{{selectedCourseList}}" wx:key="{{courseid}}">
+    <block wx:if="{{!item.over}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.couseCustom.courseid}}</view>
+      <view class="td">{{item.couseCustom.coursename}}</view>
+      <view class="td">{{item.couseCustom.teacherid}}</view>
+      <view class="td">{{item.couseCustom.coursetime}}</view>
+      <view class="td">{{item.couseCustom.classroom}}</view>
+      <view class="td">{{item.couseCustom.courseweek}}</view>
+      <view class="td">{{item.couseCustom.coursetype}}</view>
+      <view class="td">{{item.couseCustom.score}}</view>
+      <view class="td">
+        <button type='primary'data-id="{{item.courseid}}" bindtap='outCourse'>退课</button>
+      </view>
+    </view>
+    <view class="tr" wx:else>
+    <view class="td">{{item.couseCustom.courseid}}</view>
+      <view class="td">{{item.couseCustom.coursename}}</view>
+      <view class="td">{{item.couseCustom.teacherid}}</view>
+      <view class="td">{{item.couseCustom.coursetime}}</view>
+      <view class="td">{{item.couseCustom.classroom}}</view>
+      <view class="td">{{item.couseCustom.courseweek}}</view>
+      <view class="td">{{item.couseCustom.coursetype}}</view>
+      <view class="td">{{item.couseCustom.score}}</view>
+      <view class="td">
+        <button type='primary' data-id="{{item.courseid}}" bindtap='outCourse'>退课</button>
+      </view>
+    </view>
+    </block>
+  </block>
+  </scroll-view> 
+  </view>
+</view>  
+    </swiper-item>  
+    <!-- 已修课程 -->  
+    <swiper-item>  
+        <view class="table main-container">
+  <view class="tr bg-w topBlock">
+    <view class="th">课程号</view>
+    <view class="th">课程名称</view>
+    <view class="th ">教师编号</view>
+    <view class="th ">上课时间</view>
+    <view class="th ">上课地点</view>
+    <view class="th ">周数</view>
+    <view class="th ">课程类型</view>
+    <view class="th ">学分</view>
+    <view class="th ">成绩</view>
+  </view>
+  <view class="bottomBlock">
+  <scroll-view  scroll-y="true"> 
+  <block wx:for="{{selectedCourseList}}" wx:key="{{courseid}}">
+  <block wx:if="{{item.over}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.couseCustom.courseid}}</view>
+      <view class="td">{{item.couseCustom.coursename}}</view>
+      <view class="td">{{item.couseCustom.teacherid}}</view>
+      <view class="td">{{item.couseCustom.coursetime}}</view>
+      <view class="td">{{item.couseCustom.classroom}}</view>
+      <view class="td">{{item.couseCustom.courseweek}}</view>
+      <view class="td">{{item.couseCustom.coursetype}}</view>
+      <view class="td">{{item.couseCustom.score}}</view>
+      <view class="td" style='color:red'>{{item.mark}}</view>
+    </view>
+    <view class="tr" wx:else>
+      <view class="td">{{item.couseCustom.courseid}}</view>
+      <view class="td">{{item.couseCustom.coursename}}</view>
+      <view class="td">{{item.couseCustom.teacherid}}</view>
+      <view class="td">{{item.couseCustom.coursetime}}</view>
+      <view class="td">{{item.couseCustom.classroom}}</view>
+      <view class="td">{{item.couseCustom.courseweek}}</view>
+      <view class="td">{{item.couseCustom.coursetype}}</view>
+      <view class="td">{{item.couseCustom.score}}</view>
+      <view class="td" style='color:red'>{{item.mark}}</view>
+    </view>
+    </block>
+  </block>
+  </scroll-view> 
+  </view>
+</view>   
+    </swiper-item>  
+    <!-- 修改密码 -->
+     <swiper-item>  
+     <view class="container">
+  <form bindsubmit="formSubmit">
+        <view class="row">
+            <text>旧密码：</text>
+            <input type="password" name="password"  placeholder="请输入旧密码" />
+        </view>
+        <view class="row">
+            <text >新密码：</text>
+           <input  type="password" name="password1"  placeholder="请输入新密码"></input>
+        </view>
+        <view class="row">
+            <text >确认密码：</text>
+           <input  type="password" name="password2"  placeholder="请确认密码"></input>
+        </view>
+        <view class="row">
+            <button type="primary" form-type="submit">提交</button>
+            <button type="primary" form-type="reset">重置</button>
+        </view>
+  </form>
+</view> 
+    </swiper-item>
+</swiper>  

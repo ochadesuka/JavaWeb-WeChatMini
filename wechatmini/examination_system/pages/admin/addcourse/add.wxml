@@ -1,0 +1,45 @@
+<!--pages/admin/addcourse/add.wxml-->
+<view class="container">
+  <form bindsubmit="formSubmit">
+        <view class="row">
+            <text>课程号：</text>
+            <input  type="number" name="courseid"  placeholder="请输入课程号" />
+        </view>
+        <view class="row">
+            <text>课程名称：</text>
+            <input type="text" name="coursename"  placeholder="请输入课程名称" />
+        </view>
+        <view class="row">
+            <text>教师编号：</text>
+            <input type="text" name="teacherid"  placeholder="请输入教师编号" />
+        </view>
+         <view class="row">
+            <text>上课时间：</text>
+            <input type="text" name="coursetime"  placeholder="请输入上课时间" />
+        </view>
+        <view class="row">
+            <text>上课地点：</text>
+            <input type="text" name="classroom"  placeholder="请输入上课地点" />
+        </view>
+         <view class="row">
+            <text>周数：</text>
+            <input type="text" name="courseweek"  placeholder="请输入周数" />
+        </view>
+        <view class="row">
+            <text>课程类型：</text>
+            <input type="text" name="coursetype"  placeholder="请输入课程类型" />
+        </view>
+         <view class="row">
+            <text>所属院系：</text>
+            <input type="number" name="collegeid"  placeholder="请输入所属院系" />
+        </view>
+        <view class="row">
+            <text>学分：</text>
+            <input type="number" name="score"  placeholder="请输入学分" />
+        </view>
+        <view class="row">
+            <button type="primary" form-type="submit">添加</button>
+            <button type="primary" form-type="reset">重置</button>
+        </view>
+  </form>
+</view>

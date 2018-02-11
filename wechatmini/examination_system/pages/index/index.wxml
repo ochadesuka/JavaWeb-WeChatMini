@@ -1,0 +1,30 @@
+<!--index.wxml-->
+ <view class="container"> 
+ <view class="login-icon"> 
+ <image class="login-img" src="../../images/bg.jpg"></image> 
+ </view>
+ <view class="login-from">  
+ 
+  <form bindsubmit="formSubmit" bindreset="formReset">  
+   <!--账号-->
+ <view class="inputView"> 
+  <image class="nameImage" src="../../images/login1.png"></image> 
+  <label class="loginLab">账号</label> 
+  <input class="inputText" type="text" name="username" value="{{username}}" placeholder="请输入账号"  /> 
+ </view> 
+ <view class="line"></view> 
+  
+ <!--密码-->
+ <view class="inputView"> 
+  <image class="keyImage" src="../../images/login2.png"></image> 
+  <label class="loginLab">密码</label> 
+  <input class="inputText" type="password" name="password" value="{{password}}" password="true" placeholder="请输入密码"  /> 
+ </view> 
+  
+ <!--按钮-->
+ <view class="loginBtnView"> 
+  <button class="loginBtn" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" form-type='submit'>登录</button> 
+ </view> 
+</form> 
+</view> 
+ </view> 

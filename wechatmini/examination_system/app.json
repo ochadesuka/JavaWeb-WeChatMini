@@ -1,0 +1,30 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/admin/index/index",
+    "pages/student/index/index",
+    "pages/teacher/index/index",
+    "pages/teacher/gradecourse/gradecourse",
+    "pages/teacher/mark/mark",
+    "pages/logs/logs",
+    "pages/admin/core/core",
+    "pages/admin/changecourse/change",
+    "pages/admin/deletecourse/delete",
+    "pages/admin/addcourse/add",
+    "pages/admin/teacheradmin/showteacher/showteacher",
+    "pages/admin/studentadmin/showstudent/showstudent",
+    "pages/admin/passwordrset/passwordrset",
+    "pages/admin/teacheradmin/editteacher/editteacher",
+    "pages/admin/teacheradmin/addteacher/addteacher",
+    "pages/admin/teacheradmin/deleteteacher/deleteteacher",
+    "pages/admin/studentadmin/editstudent/editstudent",
+    "pages/admin/studentadmin/addstudent/addstudent",
+    "pages/admin/studentadmin/deletestudent/deletestudent"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "教务管理系统",
+    "navigationBarTextStyle": "black"
+  }
+}
